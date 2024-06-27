@@ -38,7 +38,7 @@ namespace RecipeApplicationWPF
                 string unit = IngredientUnitTextBox.Text;
                 int calories= int.Parse(CaloriesTextBox.Text);
 
-                string foodGroup = (FoodGroupComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
+                string foodGroup = (FoodGroupComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();// Get the selected food group
 
                 var ingredient = new Ingredient { Name = name, Quantity = quantity, Unit = unit, Calories= calories, FoodGroup=foodGroup};
                 ingredients.Add(ingredient);
@@ -49,7 +49,7 @@ namespace RecipeApplicationWPF
                 IngredientQuantityTextBox.Clear();
                 IngredientUnitTextBox.Clear();
                 CaloriesTextBox.Clear();
-                FoodGroupComboBox.SelectedIndex = -1;
+                FoodGroupComboBox.SelectedIndex = -1;// Clear the selected index
             }
             else
             {
@@ -57,7 +57,7 @@ namespace RecipeApplicationWPF
             }
         }
 
-        private void AddStepButton_Click(object sender, RoutedEventArgs e)
+        private void AddStepButton_Click(object sender, RoutedEventArgs e) // Add a step
         {
             string step = StepTextBox.Text;
             if (!string.IsNullOrWhiteSpace(step))
@@ -74,7 +74,7 @@ namespace RecipeApplicationWPF
             }
         }
 
-        private void SaveRecipeButton_Click(object sender, RoutedEventArgs e)
+        private void SaveRecipeButton_Click(object sender, RoutedEventArgs e) // Save the recipe
         {
             string title = TitleTextBox.Text;
 
@@ -86,7 +86,7 @@ namespace RecipeApplicationWPF
             
                
 
-            var recipe = new Recipe
+            var recipe = new Recipe // Create a new recipe
             {
                 Title = title,
                 Ingredients = new List<Ingredient>(ingredients),

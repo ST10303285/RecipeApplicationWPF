@@ -23,11 +23,12 @@ namespace RecipeApplicationWPF
     {
 
       
-        List<Ingredient> ingredients = new List<Ingredient>();
+        List<Ingredient> ingredients = new List<Ingredient>(); // Initialize the ingredients list
         List<Recipe> recipes = new List<Recipe>();
         Dictionary<string, List<Ingredient>> originalIngredientsMap= new Dictionary<string, List<Ingredient>>();
-        public Ingredient ingredient { get; private set; }
-        public MainWindow()
+        public Ingredient ingredient { get; private set; } // Initialize the ingredient object
+//------------------------------------------------------------------------------------------------------------------------------
+        public MainWindow() // Constructor
         {
             InitializeComponent();                                                                           
             recipes = new List<Recipe>(); // Initialize the recipes list
@@ -35,9 +36,9 @@ namespace RecipeApplicationWPF
 
         }
  //------------------------------------------------------------------------------------------------------------------------------
-        private void EnterNewRecipe_Click(object sender, RoutedEventArgs e)
+        private void EnterNewRecipe_Click(object sender, RoutedEventArgs e) // Enter New Recipe
         {
-            NewRecipeWindow newRecipeWindow = new NewRecipeWindow();
+            NewRecipeWindow newRecipeWindow = new NewRecipeWindow(); // Create a new instance of the NewRecipeWindow
             if (newRecipeWindow.ShowDialog() == true)
             {
                 Recipe newRecipe = newRecipeWindow.NewRecipe;
@@ -57,14 +58,14 @@ namespace RecipeApplicationWPF
         }
 //____________________________________________________________________________________________________________________________________________________
 
-        private void DisplayAllRecipes_Click(object sender, RoutedEventArgs e)
+        private void DisplayAllRecipes_Click(object sender, RoutedEventArgs e) // Display All Recipes
         {
             RecipesDataGrid.ItemsSource = recipes;
         }
-
-        private void DisplayRecipeByName_Click(object sender, RoutedEventArgs e)
+ //------------------------------------------------------------------------------------------------------------------------------
+        private void DisplayRecipeByName_Click(object sender, RoutedEventArgs e) // Display Recipe By Name
         {
-            InputDialog inputDialog = new InputDialog();
+            InputDialog inputDialog = new InputDialog(); // Create a new instance of the InputDialog
             if (inputDialog.ShowDialog() == true)
             {
                 string recipeName = inputDialog.RecipeName;
@@ -73,13 +74,13 @@ namespace RecipeApplicationWPF
                 if (recipe != null)
                 {
                     string recipeDetails = $"Title: {recipe.Title}\n\nIngredients:\n";
-                    foreach (var ingredient in recipe.Ingredients)
+                    foreach (var ingredient in recipe.Ingredients)// Display the ingredients
                     {
                         recipeDetails += $"{ingredient.Name} - {ingredient.Quantity} {ingredient.Unit} ({ingredient.Calories} calories, {ingredient.FoodGroup})\n";
                     }
 
-                    recipeDetails += "\nSteps:\n";
-                    foreach (var step in recipe.Steps)
+                    recipeDetails += "\nSteps:\n";// Display the steps
+                    foreach (var step in recipe.Steps) // Display the steps
                     {
                         recipeDetails += $"{step}\n";
                     }
@@ -93,7 +94,7 @@ namespace RecipeApplicationWPF
             }
         }
 //------------------------------------------------------------------------------------------------------------------------------
-        private void ScaleRecipe_Click(object sender, RoutedEventArgs e)
+        private void ScaleRecipe_Click(object sender, RoutedEventArgs e) // Scale Recipe
         {
             // Step 1: Prompt user to select a recipe
             if (recipes.Count == 0)
@@ -105,7 +106,7 @@ namespace RecipeApplicationWPF
             // Create a dialog to select the recipe
             InputDialogScalingRecipe selectRecipeDialog = new InputDialogScalingRecipe();
             
-            selectRecipeDialog.Message="Enter the recipe title to scale:";
+            selectRecipeDialog.Message="Enter the recipe title to scale:"; // Prompt user to enter the recipe title
             if (selectRecipeDialog.ShowDialog() == true)
             {
                 
@@ -119,11 +120,11 @@ namespace RecipeApplicationWPF
                     return;
                 }
 
-                // Step 2: Prompt user to enter the scaling factor
+               // Step 2: Prompt user to enter the scaling factor
                 InputDialogScalingRecipe scaleFactorDialog = new InputDialogScalingRecipe();
 
                
-                scaleFactorDialog.Message = "Enter the scaling factor (e.g., 2 for double, 0.5 for half):";
+                scaleFactorDialog.Message = "Enter the scaling factor (e.g., 2 for double, 0.5 for half):"; // Prompt user to enter the scaling factor
                 if (scaleFactorDialog.ShowDialog() == true)
                 {
                     
@@ -132,7 +133,7 @@ namespace RecipeApplicationWPF
                         // Step 3: Scale the ingredients
                         foreach (var ingredient in recipe.Ingredients)
                         {
-                            // Assuming you have added a Scale method to the Ingredient class
+                            
                             ingredient.Scale(scalingFactor);
                         }
 
@@ -150,7 +151,7 @@ namespace RecipeApplicationWPF
             }
         }
 
-
+//------------------------------------------------------------------------------------------------------------------------------
         private void ResetRecipeQuantities_Click(object sender, RoutedEventArgs e)
         {
             // Step 1: Check if there are any recipes available
@@ -188,34 +189,34 @@ namespace RecipeApplicationWPF
             }
         
     }
-
-        private void ClearData_Click(object sender, RoutedEventArgs e)
+//------------------------------------------------------------------------------------------------------------------------------
+        private void ClearData_Click(object sender, RoutedEventArgs e) // Clear Data
         {
             recipes.Clear();
             RecipesDataGrid.ItemsSource = null;
             MessageBox.Show("Data cleared. You can enter a new recipe.");
         }
-
-        private void Exit_Click(object sender, RoutedEventArgs e)
+//------------------------------------------------------------------------------------------------------------------------------
+        private void Exit_Click(object sender, RoutedEventArgs e) // Exit
         {
             Application.Current.Shutdown();
         }
-
-        private void FilterByIngredient_Click(object sender, RoutedEventArgs e)
+//------------------------------------------------------------------------------------------------------------------------------
+        private void FilterByIngredient_Click(object sender, RoutedEventArgs e) // Filter By Ingredient
         {
             string ingredient = IngredientFilterTextBox.Text.ToLower();
             var filteredRecipes = recipes.Where(r => r.Ingredients.Any(i => i.Name.ToLower().Contains(ingredient))).ToList();
             RecipesDataGrid.ItemsSource = filteredRecipes;
         }
-
-        private void FilterByFoodGroup_Click(object sender, RoutedEventArgs e)
+//------------------------------------------------------------------------------------------------------------------------------
+        private void FilterByFoodGroup_Click(object sender, RoutedEventArgs e) // Filter By Food Group
         {
             string foodGroup = (FoodGroupFilterComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
             var filteredRecipes = recipes.Where(r => r.Ingredients.Any(i => i.FoodGroup == foodGroup)).ToList();
             RecipesDataGrid.ItemsSource = filteredRecipes;
         }
-
-        private void FilterByCalories_Click(object sender, RoutedEventArgs e)
+//------------------------------------------------------------------------------------------------------------------------------
+        private void FilterByCalories_Click(object sender, RoutedEventArgs e) //    Filter By Calories
         {
             if (int.TryParse(MaxCaloriesTextBox.Text, out int maxCalories))
             {

@@ -1,0 +1,61 @@
+﻿<Window x:Class="RecipeApplicationWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RecipeApplicationWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="900" Width="800">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </Window.Resources>
+  
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <TextBlock Text="Recipe App Menu" FontSize ="20" Margin="10" HorizontalAlignment="Center"/>
+            <Button Content="Enter a new recipe" Click="EnterNewRecipe_Click" Margin="10"/>
+            <Button Content="Display all recipes" Click="DisplayAllRecipes_Click" Margin="10"/>
+            <Button Content="Display a specific recipe" Click="DisplayRecipeByName_Click" Margin="10"/>
+            <Button Content="Scale a recipe" Click="ScaleRecipe_Click" Margin="10"/>
+            <Button Content="Reset recipe quantities" Click="ResetRecipeQuantities_Click" Margin="10"/>
+            <Button Content="Clear data and enter a new recipe" Click="ClearData_Click" Margin="10"/>
+            <Button Content="Exit" Click="Exit_Click" Margin="10"/>
+            
+            <!--Filter Section-->
+            <TextBlock Text="Filter Recipes" FontSize ="16" Margin="10,20,10,10" HorizontalAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Ingredient: " VerticalAlignment="Center" Margin="10"/>
+                <TextBox x:Name="IngredientFilterTextBox" Width="200" Margin="10"/>
+                <Button Content="Filter by Ingredient" Click="FilterByIngredient_Click" Margin="10"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Food Group: " VerticalAlignment="Center" Margin="10"/>
+                <ComboBox x:Name="FoodGroupFilterComboBox" Width="200" Margin="10">
+                    <ComboBoxItem Content="Grains"/>
+                    <ComboBoxItem Content="Vegetables"/>
+                    <ComboBoxItem Content="Fruits"/>
+                    <ComboBoxItem Content="Dairy"/>
+                    <ComboBoxItem Content="Protein"/>
+                </ComboBox>
+                <Button Content="Filter by Food Group" Click="FilterByFoodGroup_Click" Margin="10"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="Max Calories: " VerticalAlignment="Center" Margin="10"/>
+                    <TextBox x:Name="MaxCaloriesTextBox" Width="200" Margin="10"/>
+                    <Button Content="Filter by Calories" Click="FilterByCalories_Click" Margin="10"/>
+                    </StackPanel>
+
+                <!-- Display Recipes Section -->
+                <TextBlock Text="Recipes" FontSize="16" Margin="10,20,10,10" HorizontalAlignment="Center"/>
+                <DataGrid x:Name="RecipesDataGrid" AutoGenerateColumns="False" Margin="10" Height="200">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="*"/>
+                        <DataGridTextColumn Header="Ingredients" Binding="{Binding IngredientsString}" Width="*"/>
+                        <DataGridTextColumn Header="Steps" Binding="{Binding StepsString}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

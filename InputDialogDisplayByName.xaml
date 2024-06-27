@@ -1,0 +1,17 @@
+﻿<Window x:Class="RecipeApplicationWPF.InputDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RecipeApplicationWPF"
+        mc:Ignorable="d"
+        Title="InputDialog" Height="450" Width="800">
+    <Grid>
+        <StackPanel Margin="10">
+            <TextBlock Text="Recipe Name:" Margin="0,0,0,10"/>
+            <TextBox x:Name="RecipeNameTextBox" Margin="0,0,0,10"/>
+            <Button Content="OK" Width="75" HorizontalAlignment="Right" Click="OkButton_Click"/>
+            
+        </StackPanel>
+    </Grid>
+</Window>

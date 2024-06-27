@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RecipeApplicationWPF"
         mc:Ignorable="d"
-        Title="InputDialogScalingRecipe" Height="450" Width="800">
+        Title="InputDialogScalingRecipe" Height="450" Width="800"
+        Background="BlanchedAlmond">
     <StackPanel Margin="10">
         <!-- Message Label for displaying instructions or messages -->
         <Label x:Name="MessageLabel" Content="Enter the recipe title to scale:" Margin="0,0,0,10"/>

@@ -39,7 +39,16 @@
                     <ComboBoxItem Content="Dairy"/>
                     <ComboBoxItem Content="Protein"/>
                 </ComboBox>
-                <Button Content="Filter by Food Group" Click="FilterByFoodGroup_Click" Margin="10"/>
+                <Button Content="Filter by Food Group" Click="FilterByFoodGroup_Click" Margin="10" RenderTransformOrigin="0.5,0.5">
+                        <Button.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-0.33"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Button.RenderTransform>
+                    </Button>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBlock Text="Max Calories: " VerticalAlignment="Center" Margin="10"/>

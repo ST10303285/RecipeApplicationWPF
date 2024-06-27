@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:RecipeApplicationWPF"
         xmlns:conv="clr-namespace:RecipeApplicationWPF.Converters"
         mc:Ignorable="d"
-        Title="NewRecipeWindow" Height="900" Width="800">
+        Title="NewRecipeWindow" Height="900" Width="800"
+        Background="Beige">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
     </Window.Resources>

@@ -7,7 +7,7 @@
         xmlns:conv="clr-namespace:RecipeApplicationWPF.Converters"
         mc:Ignorable="d"
         Title="NewRecipeWindow" Height="900" Width="800"
-        Background="Beige">
+        Background="BlanchedAlmond">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
     </Window.Resources>
@@ -72,7 +72,7 @@
                            IsHitTestVisible="False" 
                            Visibility="{Binding ElementName=CaloriesTextBox, Path=Text.Length, Converter={StaticResource BooleanToVisibilityConverter}}"/>
             </Grid>
-            <Button x:Name="AddIngredientButton" Content="Add Ingredient" Click="AddIngredientButton_Click" Margin="0,0,0,10"/>
+            <Button x:Name="AddIngredientButton" Content="Add Ingredient" Click="AddIngredientButton_Click" Margin="150,0,150,10"/>
 
             <ListBox x:Name="IngredientsListBox" Height="100" Margin="0,0,0,10"/>
 
@@ -85,11 +85,11 @@
                                IsHitTestVisible="False" 
                                Visibility="{Binding ElementName=StepTextBox, Path=Text.Length, Converter={StaticResource BooleanToVisibilityConverter}}"/>
             </Grid>
-            <Button x:Name="AddStepButton" Content="Add Step" Click="AddStepButton_Click" Margin="0,0,0,10"/>
+            <Button x:Name="AddStepButton" Content="Add Step" Click="AddStepButton_Click" Margin="150,0,150,10"/>
 
             <ListBox x:Name="StepsListBox" Height="100" Margin="0,0,0,10"/>
 
-            <Button x:Name="SaveRecipeButton" Content="Save Recipe" Click="SaveRecipeButton_Click"/>
+            <Button x:Name="SaveRecipeButton" Content="Save Recipe" Click="SaveRecipeButton_Click" Margin="150,0,150,10"/>
         </StackPanel>
     </Grid>
 </Window>
